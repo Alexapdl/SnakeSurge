@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Snake Surge - Permainan Ular Tangga Web3 di blockchain Solana. Mainkan, menangkan, dan dapatkan hadiah dari Prize Pool!">
+    <meta name="keywords" content="ular tangga, snake ladder, web3, solana, phantom wallet, blockchain game">
+    <title>Snake Surge 🐍 - Web3 Ular Tangga Game on Solana</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animated Background Particles -->
+    <div class="bg-particles" id="bgParticles"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-icon">🐍</span>
+                <span class="logo-text">Snake<span class="accent">Surge</span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#game">Play</a></li>
+                <li><a href="#prize-pool">Prize Pool</a></li>
+                <li><a href="#how-to-play">How to Play</a></li>
+                <li><a href="#features">Features</a></li>
+            </ul>
+            <button class="btn-connect-wallet" id="btnConnectWallet" onclick="connectPhantomWallet()">
+                <img src="https://phantom.app/img/phantom-icon-purple.svg" alt="Phantom" class="phantom-icon" onerror="this.style.display='none'">
+                <span id="walletBtnText">Connect Wallet</span>
+            </button>
+            <button class="nav-toggle" id="navToggle" onclick="toggleMobileNav()">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-badge">🎮 Web3 Gaming on Solana</div>
+            <h1 class="hero-title">
+                Mainkan <span class="gradient-text">Ular Tangga</span><br>
+                Menangkan <span class="gradient-text-alt">SOL Rewards</span>
+            </h1>
+            <p class="hero-subtitle">
+                Permainan klasik ular tangga yang dipadukan dengan teknologi blockchain Solana. 
+                Lempar dadu, hindari ular, naiki tangga, dan raih kemenangan dari prize pool!
+            </p>
+            <div class="hero-actions">
+                <a href="#game" class="btn-primary" id="btnPlayNow">
+                    <span>🎲 Main Sekarang</span>
+                </a>
+                <a href="#how-to-play" class="btn-secondary" id="btnLearnMore">
+                    <span>📖 Cara Bermain</span>
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-value" id="statPlayers">2,847</span>
+                    <span class="stat-label">Active Players</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="statGames">12,493</span>
+                    <span class="stat-label">Games Played</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="statPrize">156.8 SOL</span>
+                    <span class="stat-label">Prize Distributed</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="floating-elements">
+                <div class="float-dice">🎲</div>
+                <div class="float-snake">🐍</div>
+                <div class="float-ladder">🪜</div>
+                <div class="float-coin">◎</div>
+                <div class="float-star">⭐</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prize Pool Section -->
+    <section class="prize-pool-section" id="prize-pool">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">💰 Rewards</span>
+                <h2 class="section-title">Prize <span class="gradient-text">Pool</span></h2>
+                <p class="section-desc">Setiap permainan berkontribusi ke prize pool. Pemain pemenang mendapatkan hadiah SOL langsung ke wallet!</p>
+            </div>
+            <div class="prize-pool-card">
+                <div class="prize-pool-glow"></div>
+                <div class="prize-pool-content">
+                    <div class="prize-label">Current Prize Pool</div>
+                    <div class="prize-amount">
+                        <span class="sol-icon">◎</span>
+                        <span class="prize-value" id="prizePoolValue">24.75</span>
+                        <span class="prize-currency">SOL</span>
+                    </div>
+                    <div class="prize-usd" id="prizeUSD">≈ $3,712.50 USD</div>
+                    <div class="prize-distribution">
+                        <div class="dist-item">
+                            <span class="dist-icon">🏆</span>
+                            <span class="dist-label">Pemenang</span>
+                            <span class="dist-value">100%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="prize-features">
+                <div class="pf-card">
+                    <div class="pf-icon">⚡</div>
+                    <h3>Instant Payout</h3>
+                    <p>Hadiah langsung dikirim ke Phantom Wallet Anda setelah game selesai</p>
+                </div>
+                <div class="pf-card">
+                    <div class="pf-icon">🔒</div>
+                    <h3>Smart Contract</h3>
+                    <p>Prize pool diamankan oleh smart contract di blockchain Solana</p>
+                </div>
+                <div class="pf-card">
+                    <div class="pf-icon">📊</div>
+                    <h3>Transparent</h3>
+                    <p>Semua transaksi tercatat on-chain dan dapat diverifikasi publik</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Game Section -->
+    <section class="game-section" id="game">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">🎮 Play Now</span>
+                <h2 class="section-title">Papan <span class="gradient-text">Ular Tangga</span></h2>
+                <p class="section-desc">Klik dadu untuk bermain! Hindari ular dan cari tangga menuju kotak 100!</p>
+            </div>
+            
+            <div class="game-wrapper">
+                <!-- Game Info Panel -->
+                <div class="game-info-panel">
+                    <!-- Player Count Selector -->
+                    <div class="player-count-selector">
+                        <div class="selector-label">👥 Jumlah Pemain</div>
+                        <div class="selector-buttons">
+                            <button class="selector-btn active" data-count="2" onclick="setPlayerCount(2)">2 Pemain</button>
+                            <button class="selector-btn" data-count="3" onclick="setPlayerCount(3)">3 Pemain</button>
+                            <button class="selector-btn" data-count="4" onclick="setPlayerCount(4)">4 Pemain</button>
+                        </div>
+                    </div>
+
+                    <div class="player-info">
+                        <div class="player-card active" id="player1Card">
+                            <div class="player-avatar">🔴</div>
+                            <div class="player-details">
+                                <span class="player-name">Player 1 <small style="color:#06d6a0;">(You)</small></span>
+                                <span class="player-pos">Position: <strong id="player1Pos">1</strong></span>
+                            </div>
+                            <div class="player-turn-indicator">GILIRAN</div>
+                        </div>
+                        <div class="player-card" id="player2Card">
+                            <div class="player-avatar">🔵</div>
+                            <div class="player-details">
+                                <span class="player-name">Player 2 <small style="color:#ffd60a;">🤖 AI</small></span>
+                                <span class="player-pos">Position: <strong id="player2Pos">1</strong></span>
+                            </div>
+                            <div class="player-turn-indicator">GILIRAN</div>
+                        </div>
+                        <div class="player-card hidden-player" id="player3Card">
+                            <div class="player-avatar">🟢</div>
+                            <div class="player-details">
+                                <span class="player-name">Player 3 <small style="color:#ffd60a;">🤖 AI</small></span>
+                                <span class="player-pos">Position: <strong id="player3Pos">1</strong></span>
+                            </div>
+                            <div class="player-turn-indicator">GILIRAN</div>
+                        </div>
+                        <div class="player-card hidden-player" id="player4Card">
+                            <div class="player-avatar">🟠</div>
+                            <div class="player-details">
+                                <span class="player-name">Player 4 <small style="color:#ffd60a;">🤖 AI</small></span>
+                                <span class="player-pos">Position: <strong id="player4Pos">1</strong></span>
+                            </div>
+                            <div class="player-turn-indicator">GILIRAN</div>
+                        </div>
+                    </div>
+
+                    <!-- Dice -->
+                    <div class="dice-container">
+                        <div class="dice-label">Lempar Dadu!</div>
+                        <div class="dice" id="dice" onclick="rollDice()">
+                            <div class="dice-face" id="diceFace">
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                        <div class="dice-result" id="diceResult">Klik dadu untuk mulai</div>
+                    </div>
+
+                    <!-- Game Log -->
+                    <div class="game-log">
+                        <div class="log-title">📜 Game Log</div>
+                        <div class="log-entries" id="gameLog">
+                            <div class="log-entry">🎮 Selamat datang! Klik dadu untuk memulai permainan.</div>
+                        </div>
+                    </div>
+
+                    <!-- Skill Shop -->
+                    <div class="skill-shop">
+                        <div class="shop-title">🛒 Skill Shop (SOL)</div>
+                        <div class="shop-grid">
+                            <button class="skill-btn" id="btnShield" onclick="buySkill('shield')" title="Hindari turun saat kena ular (Hanya 1x jalan)">
+                                <span class="skill-icon">🛡️</span>
+                                <span class="skill-name">Anti-Turun</span>
+                                <span class="skill-price">◎ 0.025 SOL</span>
+                            </button>
+                            <button class="skill-btn" id="btnDoubleDice" onclick="buySkill('doubleDice')" title="Lempar 2 dadu sekaligus (Hanya 1x jalan)">
+                                <span class="skill-icon">🎲🎲</span>
+                                <span class="skill-name">Dadu Ganda</span>
+                                <span class="skill-price">◎ 0.04 SOL</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Game Controls -->
+                    <div class="game-controls">
+                        <button class="btn-reset" id="btnReset" onclick="resetGame()">🔄 Reset Game</button>
+                        <button class="btn-entry" id="btnEntry" onclick="enterGame()">💰 Entry: 0.01 SOL</button>
+                    </div>
+
+                    <!-- Legend -->
+                    <div class="game-legend">
+                        <div class="legend-item"><span class="legend-color snake-color"></span> Ular (Turun)</div>
+                        <div class="legend-item"><span class="legend-color ladder-color"></span> Tangga (Naik)</div>
+                        <div class="legend-item"><span class="legend-dot p1"></span> Player 1</div>
+                        <div class="legend-item"><span class="legend-dot p2"></span> Player 2</div>
+                        <div class="legend-item legend-p3"><span class="legend-dot p3"></span> Player 3</div>
+                        <div class="legend-item legend-p4"><span class="legend-dot p4"></span> Player 4</div>
+                    </div>
+                </div>
+
+                <!-- Game Board -->
+                <div class="game-board-container">
+                    <div class="game-board" id="gameBoard">
+                        <!-- Board cells will be generated by JS -->
+                    </div>
+                    <canvas class="board-overlay" id="boardOverlay"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Play -->
+    <section class="how-to-play" id="how-to-play">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">📖 Tutorial</span>
+                <h2 class="section-title">Cara <span class="gradient-text">Bermain</span></h2>
+                <p class="section-desc">Ikuti langkah-langkah sederhana ini untuk mulai bermain dan menang!</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card" data-step="1">
+                    <div class="step-number">01</div>
+                    <div class="step-icon">👻</div>
+                    <h3>Connect Phantom Wallet</h3>
+                    <p>Hubungkan Phantom Wallet Anda dan dapatkan saldo awal 2 SOL untuk bermain.</p>
+                </div>
+                <div class="step-card" data-step="2">
+                    <div class="step-number">02</div>
+                    <div class="step-icon">👥</div>
+                    <h3>Pilih Jumlah Pemain</h3>
+                    <p>Pilih 2, 3, atau 4 pemain. Pemain 2-4 adalah AI Bot yang bermain otomatis melawan Anda!</p>
+                </div>
+                <div class="step-card" data-step="3">
+                    <div class="step-number">03</div>
+                    <div class="step-icon">🎲</div>
+                    <h3>Lempar Dadu</h3>
+                    <p>Klik dadu untuk mengocok dan mendapatkan angka 1-6. Setiap lemparan memotong 0.01 SOL ke prize pool!</p>
+                </div>
+                <div class="step-card" data-step="4">
+                    <div class="step-number">04</div>
+                    <div class="step-icon">💰</div>
+                    <h3>Prize Pool Bertambah</h3>
+                    <p>Setiap pemain yang melempar dadu berkontribusi 0.01 SOL. Semakin lama bermain, prize pool semakin besar!</p>
+                </div>
+                <div class="step-card" data-step="5">
+                    <div class="step-number">05</div>
+                    <div class="step-icon">🐍</div>
+                    <h3>Hindari Ular & Naiki Tangga</h3>
+                    <p>Mendarat di kepala ular? Turun! Mendarat di bawah tangga? Naik! Strategi dan keberuntungan!</p>
+                </div>
+                <div class="step-card" data-step="6">
+                    <div class="step-number">06</div>
+                    <div class="step-icon">🏆</div>
+                    <h3>Raih Kemenangan</h3>
+                    <p>Pemain pertama yang sampai ke kotak 100 memenangkan 100% prize pool langsung ke wallet!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">✨ Features</span>
+                <h2 class="section-title">Mengapa <span class="gradient-text">Snake Surge</span>?</h2>
+                <p class="section-desc">Teknologi Web3 terbaik untuk pengalaman gaming yang adil dan transparan</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⛓️</div>
+                    <h3>On-Chain Verified</h3>
+                    <p>Setiap hasil permainan terverifikasi di blockchain Solana. Tidak ada kecurangan.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎰</div>
+                    <h3>Provably Fair</h3>
+                    <p>Random number generation menggunakan VRF (Verifiable Random Function) on-chain.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💸</div>
+                    <h3>Low Fees</h3>
+                    <p>Biaya transaksi sangat rendah berkat Solana. Hanya ~$0.00025 per transaksi.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>Play Anywhere</h3>
+                    <p>Mainkan dari browser manapun. Tidak perlu download aplikasi tambahan.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>Up to 4 Players</h3>
+                    <p>Bermain hingga 4 pemain secara bergiliran. Siapa yang paling cepat sampai 100?</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏅</div>
+                    <h3>Leaderboard</h3>
+                    <p>Peringkat global untuk pemain terbaik. Buktikan skillmu di papan peringkat!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-card">
+                <div class="cta-glow"></div>
+                <h2>Siap Bermain & Menang? 🎲</h2>
+                <p>Hubungkan wallet Anda sekarang dan mulai bermain ular tangga untuk memenangkan SOL!</p>
+                <div class="cta-actions">
+                    <button class="btn-primary btn-lg" onclick="connectPhantomWallet()" id="btnCtaConnect">
+                        <span>👻 Connect Phantom Wallet</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="nav-logo">
+                        <span class="logo-icon">🐍</span>
+                        <span class="logo-text">Sol<span class="accent">Snake</span></span>
+                    </div>
+                    <p>Permainan ular tangga Web3 pertama di blockchain Solana. Main, menang, dapat SOL!</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Links</h4>
+                    <a href="#home">Home</a>
+                    <a href="#game">Play Game</a>
+                    <a href="#prize-pool">Prize Pool</a>
+                    <a href="#how-to-play">Tutorial</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Community</h4>
+                    <a href="#">Discord</a>
+                    <a href="#">Twitter / X</a>
+                    <a href="#">Telegram</a>
+                    <a href="#">GitHub</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Smart Contract</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Snake Surge. Built on Solana. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Wallet Modal -->
+    <div class="modal-overlay" id="walletModal">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeWalletModal()">&times;</button>
+            <div class="modal-icon">👻</div>
+            <h3>Connect Phantom Wallet</h3>
+            <p id="modalMessage">Menghubungkan ke Phantom Wallet...</p>
+            <div class="modal-wallet-info" id="modalWalletInfo" style="display:none;">
+                <div class="wallet-address" id="modalWalletAddress"></div>
+                <div class="wallet-balance" id="modalWalletBalance"></div>
+            </div>
+            <button class="btn-primary" id="modalBtn" onclick="closeWalletModal()">OK</button>
+        </div>
+    </div>
+
+    <!-- Winner Modal -->
+    <div class="modal-overlay" id="winnerModal">
+        <div class="modal-card winner-modal">
+            <div class="confetti-container" id="confettiContainer"></div>
+            <div class="modal-icon">🏆</div>
+            <h3 id="winnerText">Player 1 Menang!</h3>
+            <p>Selamat! Hadiah dari prize pool akan dikirim ke wallet Anda.</p>
+            <div class="winner-prize">
+                <span class="sol-icon">◎</span>
+                <span id="winnerPrizeAmount">0.000 SOL</span>
+            </div>
+            <button class="btn-primary" onclick="closeWinnerModal()">🎉 Klaim Hadiah</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
